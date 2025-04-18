@@ -27,6 +27,10 @@ namespace LinqTest
                             orderby russianCity.Population descending
                             select russianCity;
 
+            //То же самое с помощью методов расширения выглядит ещё проще: 
+            //var bigCities = russianCities.Where(c => c.Population > 1000000)
+            //    .OrderByDescending(c => c.Population);
+
             foreach (var bigCity in bigCities)
                 Console.WriteLine(bigCity.Name + " - " + bigCity.Population);
 
