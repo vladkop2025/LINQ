@@ -11,6 +11,8 @@ namespace LinqTest
         static void Main(string[] args)
         {
             /*
+            Введение - удобный инструмент — LINQ, или Language Integrated Query
+
             Запросы LINQ - задача из ветки master с использованием LINQ
             мы значительно сократили количество кода.
             */
