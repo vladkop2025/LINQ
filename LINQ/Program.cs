@@ -29,6 +29,8 @@ namespace LinqTest
             мы рассмотрим LINQ to Objects
             */
 
+            //Запросы LINQ
+
             //выбрать имена на букву А и отсортировать в алфавитном порядке
             string[] people = { "Анна", "Мария", "Сергей", "Алексей", "Дмитрий", "Ян" };
 
@@ -41,8 +43,6 @@ namespace LinqTest
                 if (person.ToUpper().StartsWith("А"))
                     orderedList.Add(person);
             }
-
-            orderedList.Sort(); // сортировка по алфавиту
 
             // отсортируем список
             orderedList.Sort();
