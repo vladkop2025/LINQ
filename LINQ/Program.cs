@@ -55,6 +55,28 @@ namespace LinqTest
             //                              FirstName = s.Name,
             //                              YearOfBirth = DateTime.Now.Year - s.Age
             //                          };
+
+            //С методами расширения то же самое, ещё проще:
+            //Методы расширения, к сожалению, не поддерживают определение внутренних локальных переменных, и это одно из основных преимуществ операторов перед ними
+            //но эти два инструмента можно сочетать, поэтому ту часть запроса, где переменные вам нужны, можно написать с помощью операторов.
+
+            //// выборка имен в строки
+            //var names = students.Select(u => u.Name);
+
+            //// проекция в анонимный тип
+            //var applications = students.Select(u => new
+            //{
+            //    FirstName = u.Name,
+            //    YearOfBirth = DateTime.Now.Year - u.Age
+            //});
+
+            //// проекция в другой тип
+            //var applications1 = students.Select(u => new Application()
+            //{
+            //    FirstName = u.Name,
+            //    YearOfBirth = DateTime.Now.Year - u.Age
+            //});
+
         }
         // Создадим модель Student
         class Student
