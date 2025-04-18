@@ -72,7 +72,7 @@ namespace LinqTest
 
         }
 
-        // Создадим модель класс для города
+        // Создадим модель Student
         class Student
         {
             public string Name { get; set; }
