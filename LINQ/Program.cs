@@ -49,3 +49,27 @@ namespace LinqTest
         }
     }
 }
+
+/*
+Задание 14.1.6
+Дан список массивов:
+
+var numsList = new List<int[]>()
+{
+   new[] {2, 3, 7, 1},
+   new[] {45, 17, 88, 0},
+   new[] {23, 32, 44, -6},
+};
+Сделайте выборку всех чисел в новую коллекцию, расположив их в ней по возрастанию.
+
+Результат выведите в консоль.
+
+Ответ для самопроверки
+var orderedNums = numsList
+   .SelectMany(s => s) // выбираем элементы
+   .OrderBy(s => s); // сортируем
+
+// выводим
+foreach (var ord in orderedNums)
+    Console.WriteLine(ord);
+*/
