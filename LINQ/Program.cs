@@ -10,41 +10,44 @@ namespace LinqTest
         static void Main(string[] args)
         {
             /*
-            SelectMany — метод расширения, предоставляющий другой способ сделать сложную фильтрацию
+            Введение - удобный инструмент — LINQ, или Language Integrated Query
+            
+            Эта технология берет начало из практики по работе с базами данных с помощью языка запросов SQL,
+            LINQ делает возможным применение SQL-подобного синтаксиса в программах на языке C# при работе с данными.
+            пример SQL-запроса, и даже не обладая опытом и специальными знаниями, вы можете прочитать его и понять, что происходит: 
+            SELECT * FROM Users WHERE Country='Germany' AND City='Berlin';
+            
+            Есть следующие разновидности LINQ для разных задач: 
+
+            LINQ to Objects: применяется для работы с массивами и коллекциями;
+            LINQ to Entities: применяется для работы с базой данных через Entity Framework;
+            LINQ to SQL: используется как технология доступа к данным в MS SQL Server;
+            LINQ to XML: применяется при работе с файлами XML;
+            LINQ to DataSet: применяется при работе с объектом DataSet;
+            Parallel LINQ (PLINQ): используется для выполнения параллельных запросов.
+
+            мы рассмотрим LINQ to Objects
             */
 
-            // Подготовим данные
-            List<Student> students = new List<Student>
+            //выбрать имена на букву А и отсортировать в алфавитном порядке
+            string[] people = { "Анна", "Мария", "Сергей", "Алексей", "Дмитрий", "Ян" };
+
+            // список, куда будем сохранять выборку
+            var orderedList = new List<string>();
+
+            // пробежимся по массиву и добавим искомое в наш список
+            foreach (string person in people)
             {
-                new Student {Name="Андрей", Age=23, Languages = new List<string> {"английский", "немецкий" }},
-                new Student {Name="Сергей", Age=27, Languages = new List<string> {"английский", "французский" }},
-                new Student {Name="Дмитрий", Age=29, Languages = new List<string> {"английский", "испанский" }},
-                new Student {Name="Василий", Age=24, Languages = new List<string> {"испанский", "немецкий" }}
-            };
+                if (person.ToUpper().StartsWith("А"))
+                    orderedList.Add(person);
+            }
 
-     
-            // Составим запрос ()
-            var selectedStudents = students.SelectMany(
-                   // коллекция, которую нужно преобразовать
-                   s => s.Languages,
-                   // функция преобразования, применяющаяся к каждому элементу коллекции
-                   (s, l) => new { Student = s, Lang = l })
-               // дополнительные условия                          
-               .Where(s => s.Lang == "английский" && s.Student.Age < 28)
-               // указатель на объект выборки
-               .Select(s => s.Student);
+            orderedList.Sort(); // сортировка по алфавиту
 
-            // Выведем результат
-            foreach (Student student in selectedStudents)
-                Console.WriteLine($"{student.Name} - {student.Age}");
-        }
-
-        // Создадим модель класс для города
-        class Student
-        {
-            public string Name { get; set; }
-            public int Age { get; set; }
-            public List<string> Languages { get; set; }
+            // отсортируем список
+            orderedList.Sort();
+            foreach (string s in orderedList)
+                Console.WriteLine(s);
         }
     }
 }
