@@ -27,8 +27,32 @@ namespace LinqTest
 
             foreach (string s in selectedPeople)
                 Console.WriteLine(s);
+
+            /*
+            Функционал методов расширения очень широк, и не все они имеют свои аналоги среди операторов LINQ.
+            
+            Но мы можем сочетать и оба подхода, если это необходимо: 
+
+            namespace LinqTest
+            {
+            class Program
+                 {
+                    static void Main(string[] args)
+                    {
+                    string[] people = {"Анна", "Мария", "Сергей", "Алексей", "Дмитрий", "Ян"};
+           
+                    var selectedPeople = (from p in people
+                        where p.ToUpper().StartsWith("А")
+                         orderby p 
+                        select p).Count();
+ 
+                     Console.WriteLine($"В выборке {selectedPeople} чел");
+                   }
+                }
+            }
+            */
         }
-    }
+    } 
 }
 
 /*
